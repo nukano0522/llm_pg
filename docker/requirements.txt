@@ -1,0 +1,17 @@
+httpx==0.23.0
+numpy==1.26.0
+pandas==2.2.3
+# torch
+accelerate==1.1.1
+transformers==4.46.3
+lime
+scikit-learn
+fugashi
+ipadic
+unidic_lite
+notebook
+jupyterlab
+ipywidgets==8.1.5
+protobuf
+black
+isort

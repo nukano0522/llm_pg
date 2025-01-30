@@ -1,0 +1,26 @@
+services:
+  jupyter:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8888:8888"
+    volumes:
+      - ./workspace:/workspace
+      - jupyter_config:/root/.jupyter
+      - jupyter_data:/opt/conda/share/jupyter
+    environment:
+      - NVIDIA_VISIBLE_DEVICES=all
+      - JUPYTER_ENABLE_LAB=yes
+      # - JUPYTERLAB_DIR=/home/jovyan/.local/share/jupyter/labextensions
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - capabilities: [gpu]
+    command: >
+      jupyter lab --ip=0.0.0.0 --port=8888 --no-browser --allow-root --NotebookApp.default_url=/lab
+
+volumes:
+  jupyter_config:
+  jupyter_data:
